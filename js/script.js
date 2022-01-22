@@ -125,7 +125,13 @@ function addSystemMessage(content) {
 // TODO: do testing on this function once yen hong is done
 // This function reads the messages that have been parsed into list of objects
 function readChat(obj) {
+    let date = undefined;
     obj.forEach(function (message) {
+        if (date !== message.date) {
+            addSystemMessage(message.date);
+            date = message.date;
+        }
+
         if (message.content.charAt(0) === ':') {
             addChat(message.content.slice(2), message.time, message.author, message.author === username);
         } else {
