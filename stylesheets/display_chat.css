@@ -44,13 +44,23 @@ html{
     padding-bottom: 2.5rem;
 }
 
-.text-content{
+.text-content {
     font-size: 2.5rem;
     word-wrap: break-word;
     min-height: 5rem;
     border-radius: 2rem;
     max-width: 50rem;
     min-width: 6rem;
+}
+
+.author {
+    font-size: 2.5rem;
+    word-wrap: break-word;
+    min-height: 5rem;
+    border-radius: 2rem;
+    max-width: 50rem;
+    min-width: 6rem;
+    color: rgb(107, 115, 235);
 }
 
 .msg-time{
