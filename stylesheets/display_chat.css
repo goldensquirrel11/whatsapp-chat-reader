@@ -7,7 +7,7 @@
 html{
     font-size: 62.5%;
     font-family: Helvetica, sans-serif;
-    background-image: url(https://i.pinimg.com/564x/85/ec/df/85ecdf1c3611ecc9b7fa85282d9526e0.jpg);
+    background-image: url(../images/chat_bg.jpg);
     background-attachment: fixed;
 }
 .container{
