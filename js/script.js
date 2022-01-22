@@ -99,4 +99,37 @@ function addChat(message, time, author, isSend = false) {
     document.getElementsByClassName('chat-container')[0].append(messageDiv);
 }
 
+function addSystemMessage(content) {
+    let message = document.createElement("div");
+    message.className = 'system-message'
+    message.append(content);
+
+    document.getElementsByClassName('chat-container')[0].append(message)
+}
+
+// {
+//     date: '22/08/2021',
+//     time: '17:06',
+//     author: '+60 13-629 6810',
+//     content: ': No problem! �'
+//   }
+
+// {
+//     date: '21/08/2021',
+//     time: '18:36',
+//     author: '+60 11-5112 1620',
+//     content: " joined using this group's invite link"
+//   }
+
+
+// TODO: do testing on this function once yen hong is done
+// This function reads the messages that have been parsed into list of objects
+function readChat(obj) {
+    obj.forEach(function (message) {
+        if (message.content.charAt(0) === ':') {
+            addChat(message.content.slice(2), message.time, message.author, message.author === username);
+        } else {
+            addSystemMessage(message.author + message.content);
+        }
+    });
 }
