@@ -95,32 +95,39 @@ function returnObjectAndroid(str){
     return object;
 }
 
-
 function returnObjectIOS(str){
-        let regexp =  /\[([0-9]+\/[0-9]+\/[0-9]+), ([0-9]+:[0-9]+:[0-9]+ (PM|AM))\] ((\+.+|.+))( joined using this group's invite link| left|: ((.|\n)+)*)/;
-        let result = str.match(regexp);
-        //solving author , content problem
-        let author = result[4];
-        let content = result[6];
-        if (str.search(/<attached: [\d\-\w\.]*>/) !== -1){
-            let substring = author.slice(-12,author.length);
-            author = author.slice(0,-12);
-            content = substring + content;
-        }
-        let object = {
-            date : result[1],
-            time : result[2],
-            author: author,
-            content : content
-        }
-        return object;
+    let regexp =  /\[([0-9]+\/[0-9]+\/[0-9]+), ([0-9]+:[0-9]+:[0-9]+ (PM|AM))\] ((\+.+|.+))( joined using this group's invite link| left|: ((.|\n)+)*)/;
+    let result = str.match(regexp);
+    //solving author , content problem
+    let author = result[4];
+    let content = result[6];
+    if (str.search(/<attached: [\d\-\w\.]*>/) !== -1){
+        let substring = author.slice(-12,author.length);
+        author = author.slice(0,-12);
+        content = substring + content;
+    }
+    let object = {
+        date : result[1],
+        time : result[2],
+        author: author,
+        content : content
+    }
+    return object;
+}
+
+function iosObjValidation(str){
+    return ((str.search(/joined using this group's invite link/) !== -1 || str.search(/ left/) !== -1) || (str.search(/\[[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+:[0-9]+ (PM|AM)\].*:/) !== -1 && str.search(/Messages and calls are end-to-end encrypted\. No one outside of this chat, not even WhatsApp, can read or listen to them\./) === -1 && str.search(/[\+\d\s\-]+.+ changed their phone number to a new number\..+Tap to message or add the new number\./) === -1 && str.search(/\[[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+:[0-9]+ (PM|AM)\] - Your security code with .+ changed\. Tap to learn more\./) === -1 && str.search(/[\+\d\s\-]+created this group/) === -1 && str.search(/[\+\d\s\-]*.*changed the group description/)== -1 && str.search(/.+ changed this group's icon./) === -1 && str.search(/.+ added .+/) === -1));
+}
+
+function androidObjValidation(str){
+    return((str.search(/joined using this group's invite link/) !== -1 || str.search(/ left/) !== -1) || (str.search(/[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+.+:/) !== -1 && str.search(/[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ - Messages and calls are end-to-end encrypted/) === -1 && str.search(/[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ - Your security code with .+ changed\. Tap to learn more\./ ) === -1 && str.search(/[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ -.+created group ".+"/ ) === -1 && str.search(/[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ - [\+\d\s\-]+ changed to [\+\d\s\-]+/ ) === -1 && str.search(/.+ added .+/) === -1 && str.search(/.+ changed the group description/) === -1 && str.search(/.+ changed this group's icon/) === -1));
 }
 
 function create_object(list,os){
     let objList = [];
     if (os === "android"){
         for (let i = 0; i < list.length ; i++){
-            if (list[i].search(/[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ - Messages and calls are end-to-end encrypted/) === -1 && list[i].search(/[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ - Your security code with .+ changed\. Tap to learn more\./ ) === -1){
+            if (androidObjValidation(list[i])){
                 let obj = returnObjectAndroid(list[i]);
                 objList.push(obj);
             }
@@ -128,7 +135,7 @@ function create_object(list,os){
     }
     else if (os === "ios"){
         for (let i = 0; i < list.length ; i++){
-            if (list[i].search(/Messages and calls are end-to-end encrypted\. No one outside of this chat, not even WhatsApp, can read or listen to them\./) === -1){
+            if (iosObjValidation(list[i])){
                 let obj = returnObjectIOS(list[i]);
                 objList.push(obj);
             }
@@ -144,6 +151,7 @@ function returnMessages(str,os){
     //messages is an Object List.
     return messages;
 }
+
 
 function addChat(message, time, author, isSend = false) {
     let messageDiv = document.createElement("div");
