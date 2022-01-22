@@ -1,45 +1,46 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html{
+html {
     font-size: 62.5%;
     font-family: Helvetica, sans-serif;
     background-image: url(../images/chat_bg.jpg);
     background-attachment: fixed;
 }
-.container{
+
+.container {
     margin-top: 5%;
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 5%;
 }
 
-.date{
+.system-message {
     font-size: 2rem;
-    color : white;
+    color: white;
     border-radius: 2rem;
     background-color: #262D31;
-    opacity : 80%;
+    opacity: 80%;
     padding: 1rem;
     text-align: center;
-    margin-right:auto;
-    margin-left:auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.chat-container{
+.chat-container {
     display: flex;
-    gap : 2rem;
+    gap: 2rem;
     flex-direction: column;
-} 
+}
 
-.msg{
+.msg {
     color: white;
     position: relative;
     max-width: 50rem;
-    max-height:auto;
+    max-height: auto;
     padding-top: 1rem;
     padding-bottom: 2.5rem;
 }
@@ -63,25 +64,25 @@ html{
     color: rgb(107, 115, 235);
 }
 
-.msg-time{
-    font-size:1.7rem;
+.msg-time {
+    font-size: 1.7rem;
     position: absolute;
     bottom: 2px;
-    right:13px;
+    right: 13px;
     opacity: 70%;
 }
 
-.sent-msg{
-    background-color:#056162;
+.sent-msg {
+    background-color: #056162;
     border-radius: 2rem;
     padding-right: 2rem;
     align-self: flex-end;
     padding-left: 2rem;
 }
 
-.received-msg{
+.received-msg {
     background-color: #262D31;
-    border-radius:2rem;
+    border-radius: 2rem;
     padding-left: 2rem;
     align-self: flex-start;
     padding-right: 2rem;
