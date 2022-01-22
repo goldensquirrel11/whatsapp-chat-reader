@@ -34,42 +34,113 @@ function readFile(file) {
     username = document.getElementById('username').value
 
     // splits chat into a list of strings
-    create_list(str, os);
+
 }
 
-function isDateApple(str) {
-    let s = str.search('\[[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+:[0-9]+ (PM|AM)\]');
-    if (s === 0) {
+
+function isDateIOS(str){
+    var s = str.search('\[[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+:[0-9]+ (PM|AM)\]');
+    if (s === 0){
         return true;
-    } else {
+    }
+    else{
         return false;
     }
 }
 
-function isDateAndroid(str) {
-    let s = str.search('[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ -');
-    if (s === 0) {
+function isDateAndroid(str){
+    var s = str.search('[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ -');
+    if (s === 0){
         //make sure it's starting with a date
         return true;
-    } else {
+    }
+    else{
         return false;
     }
 }
 
-function create_list(str, os) {
+function create_list(str,os){
+    let list = [];
     let msg = "";
-    for (let i = 0; i < str.length; i++) {
-        if (msg.length > 3) {
-            // msg.length > 3, make sure it's not an empty string
-            if ((os === "android" && isDateAndroid(str.slice(i, i + 19))) || (os === "ios" && isDateApple(str.slice(i, i + 25)))) {
-                //19 is the length of the date formatted in android, and 25 is for IOS
+    for (var i = 0; i < str.length ; i ++){
+        if (msg.length > 3){
+                // msg.length > 3, make sure it's not an empty string
+                if((os === "android" && isDateAndroid(str.slice(i,i+19))) || (os === "ios" && isDateIOS(str.slice(i,i+25))) ){
+                    //19 is the length of the date formatted in android, and 25 is for IOS
                     list.push(msg);
-                msg = "";
-            }
+                    msg = "";
+                }
         }
         msg += str[i];
     }
     list.push(msg);
+    return list;
+}
+
+function returnObjectAndroid(str){
+    let regexp =  /([0-9]+\/[0-9]+\/[0-9]+), ([0-9]+:[0-9]+) - ((\+.+|.+))( joined using this group's invite link| left|: ((.|\n)+)*)/;
+    let result = str.match(regexp);
+    console.log(result);
+    console.log(str);
+    let author = result[3];
+    let content = result[5];
+    let object = {
+        date : result[1],
+        time : result[2],
+        author: author,
+        content : content
+    }
+    return object;
+}
+
+
+function returnObjectIOS(str){
+        let regexp =  /\[([0-9]+\/[0-9]+\/[0-9]+), ([0-9]+:[0-9]+:[0-9]+ (PM|AM))\] ((\+.+|.+))( joined using this group's invite link| left|: ((.|\n)+)*)/;
+        let result = str.match(regexp);
+        //solving author , content problem
+        let author = result[4];
+        let content = result[6];
+        if (str.search(/<attached: [\d\-\w\.]*>/) !== -1){
+            let substring = author.slice(-12,author.length);
+            author = author.slice(0,-12);
+            content = substring + content;
+        }
+        let object = {
+            date : result[1],
+            time : result[2],
+            author: author,
+            content : content
+        }
+        return object;
+}
+
+function create_object(list,os){
+    let objList = [];
+    if (os === "android"){
+        for (let i = 0; i < list.length ; i++){
+            if (list[i].search(/[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ - Messages and calls are end-to-end encrypted/) === -1 && list[i].search(/[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ - Your security code with .+ changed\. Tap to learn more\./ ) === -1){
+                let obj = returnObjectAndroid(list[i]);
+                objList.push(obj);
+            }
+        }
+    }
+    else if (os === "ios"){
+        for (let i = 0; i < list.length ; i++){
+            if (list[i].search(/Messages and calls are end-to-end encrypted\. No one outside of this chat, not even WhatsApp, can read or listen to them\./) === -1){
+                let obj = returnObjectIOS(list[i]);
+                objList.push(obj);
+            }
+        }
+    }
+    return objList;
+}
+
+
+function returnMessages(str,os){
+    let list = create_list(str,os);
+    let messages = create_object(list,os);
+    //messages is an Object List.
+    return messages;
 }
 
 function addChat(message, time, author, isSend = false) {
