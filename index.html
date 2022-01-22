@@ -8,9 +8,17 @@
 </head>
 
 <body>
-    <form action="/display_chat.html">
+    <form>
         <input type="file" id="myFiles">
-        <input type="button" value="parse" onclick="printFile()">
+
+        <input type="text" id="username" placeholder="Your whatsapp name">
+
+        <input type="radio" id="ios" name="os" value="ios">
+        <label for="ios">IOS</label>
+        <input type="radio" id="android" name="os" value="android">
+        <label for="android">android</label>
+
+        <input type="button" value="parse" onclick="readFile()">
     </form>
     <div class="container">
         <div class="chat-container">
