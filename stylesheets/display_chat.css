@@ -77,5 +77,6 @@ html{
     padding-right: 2rem;
 }
 
-
-
+form {
+    margin: 10% 10%;
+}
