@@ -3,6 +3,7 @@ let fileList = undefined;
 let str = '';
 let list = [];
 let os = undefined;
+let username = '';
 
 
 // listens for changes in files uploaded
@@ -19,6 +20,19 @@ function readFile(file) {
         str = evt.target.result;
     };
     reader.readAsText(file);
+
+    // get OS type
+    radios = document.getElementsByName('os')
+    for (let radio of radios) {
+        if (radio.checked) {
+            os = radio.value
+        }
+    }
+
+    // set username
+    username = document.getElementById('username').value
+
+    // splits chat into a list of strings
     create_list(str, os);
 }
 
