@@ -5,12 +5,13 @@ let list = [];
 let os = undefined;
 
 
+// listens for changes in files uploaded
 fileSelector.addEventListener('change', (event) => {
     fileList = event.target.files;
     console.log(fileList);
 });
 
-function printFile(file) {
+// gets content from txt file and turns it into a string
     file = fileList[0];
     const reader = new FileReader();
     reader.onload = function (evt) {
@@ -60,9 +61,9 @@ function create_list(str,os){
 function addChat(message, time, isSend=false) {
     let messageDiv = document.createElement("div");
     if (isSend) {
-        messageDiv.className = "msg sent-msg"
+        messageDiv.className = "msg sent-msg";
     } else {
-        messageDiv.className = "msg received-msg"
+        messageDiv.className = "msg received-msg";
     }
 
     let textDiv = document.createElement("div")
