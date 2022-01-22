@@ -73,7 +73,7 @@ function create_list(str,os){
     list.push(msg);
 }
 
-function addChat(message, time, isSend=false) {
+function addChat(message, time, author, isSend = false) {
     let messageDiv = document.createElement("div");
     if (isSend) {
         messageDiv.className = "msg sent-msg";
@@ -81,16 +81,23 @@ function addChat(message, time, isSend=false) {
         messageDiv.className = "msg received-msg";
     }
 
-    let textDiv = document.createElement("div")
-    textDiv.className = "text-content"
-    textDiv.append(message)
+    let authorDiv = document.createElement("div");
+    authorDiv.className = "author";
+    authorDiv.append(author);
 
-    let timeDiv = document.createElement("div")
-    timeDiv.className = "msg-time"
-    timeDiv.append(time)
+    let textDiv = document.createElement("div");
+    textDiv.className = "text-content";
+    textDiv.append(message);
 
-    messageDiv.append(textDiv)
-    messageDiv.append(timeDiv)
+    let timeDiv = document.createElement("div");
+    timeDiv.className = "msg-time";
+    timeDiv.append(time);
 
-    document.getElementsByClassName('chat-container')[0].append(messageDiv)
+    messageDiv.append(authorDiv);
+    messageDiv.append(textDiv);
+    messageDiv.append(timeDiv);
+
+    document.getElementsByClassName('chat-container')[0].append(messageDiv);
+}
+
 }
