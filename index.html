@@ -1,14 +1,59 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 
 <head>
+    <title>Whatsapp Chat Reader</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Whatsapp chat viewer</title>
+    <link rel="stylesheet" href="./stylesheets/display_chat.css">
 </head>
 
 <body>
-    
+    <form action="/display_chat.html">
+        <input type="file" id="myFiles">
+        <input type="button" value="parse" onclick="printFile()">
+    </form>
+    <div class="container">
+        <div class="chat-container">
+            <div class="date">11-10-2021</div>
+            <div class="msg received-msg">
+                
+                <div class="text-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas atque facilis a
+                    minus adipisci nam, aut dolorum voluptatibus architecto necessitatibus fugit fuga alias rerum sed
+                    quae amet! Facilis, optio odio!</div>
+                <div class="msg-time">10:00PM</div>
+            </div>
+            <div class="msg sent-msg">
+                <div class="text-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque facere
+                    voluptatibus culpa incidunt tenetur cumque eos exercitationem ea, in aspernatur facilis repellat
+                    iste. Magnam dolorem enim hic adipisci inventore quia?</div>
+                <div class="msg-time">10:01PM</div>
+            </div>
+            <div class="msg received-msg">
+                <div class="text-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem soluta,
+                    praesentium saepe porro deleniti consectetur, beatae quod nisi doloribus tempora culpa
+                    necessitatibus temporibus fugiat eveniet repellat, perferendis eos dolor nostrum.</div>
+                <div class="msg-time">10:02PM</div>
+            </div>
+            <div class="msg received-msg">
+                <div class="text-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem soluta,
+                    praesentium saepe porro deleniti consectetur, beatae quod nisi doloribus tempora culpa
+                    necessitatibus temporibus fugiat eveniet repellat, perferendis eos dolor nostrum.</div>
+                <div class="msg-time">10:02PM</div>
+            </div>
+            <div class="msg sent-msg">
+                <div class="text-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem soluta,
+                    praesentium saepe porro deleniti consectetur, beatae quod nisi doloribus tempora culpa
+                    necessitatibus temporibus fugiat eveniet repellat, perferendis eos dolor nostrum.</div>
+                <div class="msg-time">10:02PM</div>
+            </div>
+            <div class="msg received-msg">
+                <div class="text-content">
+                    dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+                <div class="msg-time">10:02PM</div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>
