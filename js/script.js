@@ -56,3 +56,25 @@ function create_list(str,os){
     }
     list.push(msg);
 }
+
+function addChat(message, time, isSend=false) {
+    let messageDiv = document.createElement("div");
+    if (isSend) {
+        messageDiv.className = "msg sent-msg"
+    } else {
+        messageDiv.className = "msg received-msg"
+    }
+
+    let textDiv = document.createElement("div")
+    textDiv.className = "text-content"
+    textDiv.append(message)
+
+    let timeDiv = document.createElement("div")
+    timeDiv.className = "msg-time"
+    timeDiv.append(time)
+
+    messageDiv.append(textDiv)
+    messageDiv.append(timeDiv)
+
+    document.getElementsByClassName('chat-container')[0].append(messageDiv)
+}
