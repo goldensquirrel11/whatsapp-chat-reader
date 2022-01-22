@@ -9,6 +9,7 @@ let username = '';
 // listens for changes in files uploaded
 fileSelector.addEventListener('change', (event) => {
     fileList = event.target.files;
+
     console.log(fileList);
 });
 
@@ -36,37 +37,37 @@ function readFile(file) {
     create_list(str, os);
 }
 
-function isDateApple(str){
+function isDateApple(str) {
     let s = str.search('\[[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+:[0-9]+ (PM|AM)\]');
-    if (s === 0){
+    if (s === 0) {
         return true;
-    }
+    } else {
     else{
         return false;
     }
 }
 
-function isDateAndroid(str){
+function isDateAndroid(str) {
     let s = str.search('[0-9]+\/[0-9]+\/[0-9]+, [0-9]+:[0-9]+ -');
-    if (s === 0){
+    if (s === 0) {
         //make sure it's starting with a date
         return true;
-    }
+    } else {
     else{
         return false;
     }
 }
 
-function create_list(str,os){
+function create_list(str, os) {
     let msg = "";
-    for (let i = 0; i < str.length ; i ++){
-        if (msg.length > 3){
-                // msg.length > 3, make sure it's not an empty string
-                if((os === "android" && isDateAndroid(str.slice(i,i+19))) || (os === "ios" && isDateApple(str.slice(i,i+25))) ){
-                    //19 is the length of the date formatted in android, and 25 is for IOS
+    for (let i = 0; i < str.length; i++) {
+        if (msg.length > 3) {
+            // msg.length > 3, make sure it's not an empty string
+            if ((os === "android" && isDateAndroid(str.slice(i, i + 19))) || (os === "ios" && isDateApple(str.slice(i, i + 25)))) {
+                //19 is the length of the date formatted in android, and 25 is for IOS
                     list.push(msg);
-                    msg = "";
-                }
+                msg = "";
+            }
         }
         msg += str[i];
     }
