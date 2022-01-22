@@ -1,7 +1,6 @@
 const fileSelector = document.getElementById('myFiles');
 let fileList = undefined;
 let str = '';
-let list = [];
 let os = undefined;
 let username = '';
 
@@ -22,19 +21,22 @@ function readFile(file) {
     };
     reader.readAsText(file);
 
+    setTimeout(function run(){
     // get OS type
-    radios = document.getElementsByName('os')
-    for (let radio of radios) {
-        if (radio.checked) {
-            os = radio.value
+        radios = document.getElementsByName('os')
+        for (let radio of radios) {
+            if (radio.checked) {
+                os = radio.value;
+            }
         }
-    }
 
-    // set username
-    username = document.getElementById('username').value
-
-    // splits chat into a list of strings
-
+        // set username
+        username = document.getElementById('username').value;
+        console.log(3);
+        let obj = returnMessages(str,os);
+        console.log(obj);
+        readChat(obj);
+    },500);
 }
 
 
