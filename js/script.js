@@ -12,6 +12,7 @@ fileSelector.addEventListener('change', (event) => {
 });
 
 // gets content from txt file and turns it into a string
+function readFile(file) {
     file = fileList[0];
     const reader = new FileReader();
     reader.onload = function (evt) {
