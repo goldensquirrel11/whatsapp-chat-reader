@@ -1,0 +1,81 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: Helvetica, sans-serif;
+    background-image: url(https://i.pinimg.com/564x/85/ec/df/85ecdf1c3611ecc9b7fa85282d9526e0.jpg);
+    background-attachment: fixed;
+}
+.container{
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+}
+
+.date{
+    font-size: 2rem;
+    color : white;
+    border-radius: 2rem;
+    background-color: #262D31;
+    opacity : 80%;
+    padding: 1rem;
+    text-align: center;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+.chat-container{
+    display: flex;
+    gap : 2rem;
+    flex-direction: column;
+} 
+
+.msg{
+    color: white;
+    position: relative;
+    max-width: 50rem;
+    max-height:auto;
+    padding-top: 1rem;
+    padding-bottom: 2.5rem;
+}
+
+.text-content{
+    font-size: 2.5rem;
+    word-wrap: break-word;
+    min-height: 5rem;
+    border-radius: 2rem;
+    max-width: 50rem;
+    min-width: 6rem;
+}
+
+.msg-time{
+    font-size:1.7rem;
+    position: absolute;
+    bottom: 2px;
+    right:13px;
+    opacity: 70%;
+}
+
+.sent-msg{
+    background-color:#056162;
+    border-radius: 2rem;
+    padding-right: 2rem;
+    align-self: flex-end;
+    padding-left: 2rem;
+}
+
+.received-msg{
+    background-color: #262D31;
+    border-radius:2rem;
+    padding-left: 2rem;
+    align-self: flex-start;
+    padding-right: 2rem;
+}
+
+
+
