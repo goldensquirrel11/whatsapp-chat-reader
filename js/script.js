@@ -22,6 +22,9 @@ function readFile(file) {
     reader.readAsText(file);
 
     setTimeout(function run(){
+        // clear chat bubbles
+        document.getElementsByClassName('chat-container')[0].innerHTML = '';
+
     // get OS type
         radios = document.getElementsByName('os')
         for (let radio of radios) {
@@ -62,6 +65,7 @@ function isDateAndroid(str){
 }
 
 function create_list(str,os){
+    console.log(str)
     let list = [];
     let msg = "";
     for (var i = 0; i < str.length ; i ++){
@@ -146,7 +150,9 @@ function create_object(list,os){
 
 
 function returnMessages(str,os){
+    console.log(str)
     let list = create_list(str,os);
+    console.log(list)
     let messages = create_object(list,os);
     //messages is an Object List.
     return messages;
