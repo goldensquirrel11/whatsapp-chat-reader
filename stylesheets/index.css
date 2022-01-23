@@ -1,0 +1,123 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: 'Montserrat', sans-serif;
+    color: #bebebe;
+    background-color: black;
+}
+
+body{
+    padding-bottom: 2rem;
+}
+
+.main-bg {
+    background-image: url(../images/main.png);
+    height: 100vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+div.instructions{
+    padding-top : 2rem;
+    display:flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2rem;
+}
+
+.instructions h2{
+    font-size: x-large;
+    text-align: center;
+    color: #bebebe;
+}
+.instructions .questions h3{
+    font-size: 2rem;
+    text-align: center;
+}
+
+hr{
+    width:50rem;
+    border: 1px solid #009A45;
+}
+
+.instructions p{
+    font-size: medium;
+}
+
+.button a{
+    text-decoration: none;
+    color: #bebebe;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+}
+
+.button a{
+    text-align: center;
+    width:10rem;
+    height: 3.5rem;
+    display:inline-block;
+    padding:0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 3rem;
+    border: solid 1px #009A45; 
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.button a:hover{
+    border-color: white;
+    color: #009A45;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.aboutus{
+    margin-top: 2rem;
+}
+
+.aboutus h2{
+    font-size: x-large;
+    text-align: center;
+    height: 4rem;
+}
+
+.aboutus h3{
+    margin-top: 1rem;
+}
+
+.aboutus-paragraph{
+    width:80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.aboutus-paragraph h3{
+    font-size: 1.5rem;
+    height:2rem;
+}
+
+.aboutus-paragraph p{
+    font-size: 1rem;
+}
