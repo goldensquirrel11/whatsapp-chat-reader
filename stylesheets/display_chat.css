@@ -5,7 +5,7 @@
 }
 
 html {
-    font-size: 62.5%;
+    /* font-size: 62.5%; */
     font-family: Helvetica, sans-serif;
     background-image: url(../images/chat_bg.jpg);
     background-attachment: fixed;
@@ -19,7 +19,7 @@ html {
 }
 
 .system-message {
-    font-size: 2rem;
+    /* font-size: 2rem; */
     color: white;
     border-radius: 2rem;
     background-color: #262D31;
@@ -34,6 +34,7 @@ html {
     display: flex;
     gap: 2rem;
     flex-direction: column;
+    font-size: 1.3em;
 }
 
 .msg {
@@ -46,18 +47,18 @@ html {
 }
 
 .text-content {
-    font-size: 2.5rem;
+    /* font-size: 1.5rem; */
     word-wrap: break-word;
-    min-height: 5rem;
+    /* min-height: 5rem; */
     border-radius: 2rem;
     max-width: 50rem;
     min-width: 6rem;
 }
 
 .author {
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
     word-wrap: break-word;
-    min-height: 5rem;
+    /* min-height: 5rem; */
     border-radius: 2rem;
     max-width: 50rem;
     min-width: 6rem;
@@ -65,7 +66,7 @@ html {
 }
 
 .msg-time {
-    font-size: 1.7rem;
+    /* font-size: 1.7rem; */
     position: absolute;
     bottom: 2px;
     right: 13px;
@@ -88,9 +89,59 @@ html {
     padding-right: 2rem;
 }
 
-form {
-    margin: 10% 10%;
+/* subscribe styling */
+.header {
     display: flex;
-    flex-flow: column nowrap;
-    color: aliceblue;
+    flex-flow: row nowrap;
+    align-items: center; 
+    padding: 10px 0px;
+    background-color: rgb(138, 140, 255);
+    font-size: 0.85em;
+}
+
+.header img {
+    width: 30em;
+}
+
+.header form {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-right: auto;
+    align-items: center;
+}
+
+.header form * {
+    margin: 0 10px;
+}
+
+.header form input {
+    height: fit-content;
+    font-size: 1.4em;
+    align-self: center;
+}
+
+.header form .submit {
+    background-color: rgb(157, 104, 255);
+    border: 0;
+    border-radius: 0.5em;
+    padding: 0.8em 1.4em;
+    color: rgb(255, 255, 255);
+    font-size: 1.5em;
+}
+
+.header form .submit:hover {
+    transition: ease-out 0.5s;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 1400px) {
+    .header form {
+        flex-flow: column nowrap;
+        margin-left: 5%;
+    }
+
+    .header form * {
+        margin: 10px;
+    }
 }
