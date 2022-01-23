@@ -5,14 +5,13 @@
 }
 
 html{
-    font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
     color: #bebebe;
     background-color: black;
 }
 
 body{
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
 }
 
 .main-bg {
@@ -31,29 +30,27 @@ div.instructions{
     flex-direction: column;
     gap: 2rem;
     align-items: center;
-    width: 65%;
+    width: 80%;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 2rem;
 }
 
 .instructions h2{
-    font-size: x-large;
+    font-size: 3.5rem;
     text-align: center;
     color: #bebebe;
 }
-.instructions .questions h3{
-    font-size: 2rem;
-    text-align: center;
-}
 
 hr{
-    width:50rem;
-    border: 1px solid #009A45;
+    width:70rem;
+    border: 2px solid #009A45;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .instructions p{
-    font-size: medium;
+    font-size: x-large;
 }
 
 .button a{
@@ -67,14 +64,15 @@ hr{
 }
 
 .button a{
+    font-size: x-large;
     text-align: center;
-    width:10rem;
-    height: 3.5rem;
+    width:20rem;
+    height: 4rem;
     display:inline-block;
-    padding:0.5rem;
-    padding-bottom: 0.5rem;
-    border-radius: 3rem;
-    border: solid 1px #009A45; 
+    padding:1rem;
+    padding-bottom: 1rem;
+    border-radius: 6rem;
+    border: solid 2px #009A45; 
     opacity: 1;
     transition: 0.3s;
 }
@@ -94,17 +92,18 @@ footer{
 
 
 .aboutus{
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 
 .aboutus h2{
-    font-size: x-large;
+    font-size: 3.5rem;
     text-align: center;
-    height: 4rem;
+    height: 6rem;
 }
 
 .aboutus h3{
     margin-top: 1rem;
+    font-size: x-large;
 }
 
 .aboutus-paragraph{
@@ -114,10 +113,10 @@ footer{
 }
 
 .aboutus-paragraph h3{
-    font-size: 1.5rem;
-    height:2rem;
+    font-size: 2rem;
+    height:4rem;
 }
 
 .aboutus-paragraph p{
-    font-size: 1rem;
+    font-size: x-large;
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Whatsapp Chat Reader</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./stylesheets/display_chat.css">
+</head>
+
+<body>
+    <div class="header">
+        <img src="/WhatsApp viewer logo.svg">
+        <form>
+            <input type="file" id="myFiles">
+    
+            <input type="text" id="username" placeholder="Your whatsapp name">
+            <div id="radio">
+                <input type="radio" id="ios" name="os" value="ios">
+                <label for="ios">IOS</label>
+                <input type="radio" id="android" name="os" value="android">
+                <label for="android">android</label>
+            </div>
+    
+            <input type="button" class="submit" value="parse" onclick="readFile()">
+        </form>
+    </div>
+    <div class="container">
+        <div class="chat-container">
+            
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
